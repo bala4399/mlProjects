@@ -2,11 +2,13 @@ import os
 import sys
 from src.exception import CustomException
 from src.logger import logging
+# from src.pipeline.predict_pipeline import *
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
-
+# from src.components.myfile import myfunc
+# print(myfunc())
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
 
