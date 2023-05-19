@@ -3,7 +3,9 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from src.pipeline.predict_pipeline import CustomData,PredictPipeline
-app=Flask(__name__)
+
+application=Flask(__name__)
+app =application
 
 # print('hi')
 
@@ -11,17 +13,14 @@ app=Flask(__name__)
 
 @app.route('/')
 def home():
-    try:
-        return render_template('home.html') 
-    except Exception as e:
-        print(e)
+    return render_template('index.html')
+    
 
-@app.route('/predictdata',methods=['POST'])
+@app.route('/predictdata',methods=['GET','POST'])
 def predict_datapoint():
-    # if request.method=='GET':
-    #     print("hi")
-    #     return render_template('home.html')
-    # else:
+    if request.method=='GET':
+        return render_template('home.html')
+    else:
         data=CustomData(
             gender=request.form.get('gender'),
             race_ethnicity=request.form.get('ethnicity'),
@@ -41,8 +40,7 @@ def predict_datapoint():
         results=predict_pipeline.predict(pred_df)
         print("after Prediction")
         return render_template('home.html',results=results[0])
-    
+        
 
 if __name__=="__main__":
-    app.debug=True
-app.run()
+    app.run('0.0.0.0')
