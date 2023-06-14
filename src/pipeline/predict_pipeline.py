@@ -11,7 +11,7 @@ class PredictPipeline:
 
     def predict(self,features):
         try:
-            model_path=os.path.join("artifacts","model.pkl")
+            model_path=os.path.join("C:\\Users\DELL\\Downloads\\New folder\\mlproject\\mlProjects\\artifacts","model.pkl")
             preprocessor_path=os.path.join('artifacts','preprocessor.pkl')
             print("Before Loading")
             model=load_object(file_path=model_path)
